@@ -13,6 +13,7 @@
   #:export (tailscale
             tailscale-service-type))
 
+;; Package tailscale
 (define-public tailscale
   (package
     (name "tailscale")
@@ -43,6 +44,7 @@
 computers, and cloud instances.")
     (license license:bsd-3)))
 
+;; Configuration du service
 (define-record-type* <tailscale-configuration>
   tailscale-configuration make-tailscale-configuration
   tailscale-configuration?
@@ -51,6 +53,7 @@ computers, and cloud instances.")
   (log-file tailscale-configuration-log-file
             (default "/var/log/tailscaled.log")))
 
+;; Service Shepherd
 (define (tailscale-shepherd-service config)
   (list (shepherd-service
          (documentation "Tailscale VPN daemon")
@@ -62,6 +65,7 @@ computers, and cloud instances.")
                    #:log-file #$(tailscale-configuration-log-file config)))
          (stop #~(make-kill-destructor)))))
 
+;; Définition du service type
 (define-public tailscale-service-type
   (service-type
    (name 'tailscale)
