@@ -1,0 +1,77 @@
+#+TITLE: prop4n Guix Channel
+#+AUTHOR: prop4n
+#+LANGUAGE: en
+
+* Table of Contents :TOC:
+- [[#about][About]]
+- [[#installation][Installation]]
+- [[#available-packages][Available Packages]]
+  - [[#tailscale][Tailscale]]
+- [[#available-services][Available Services]]
+  - [[#tailscale-service][Tailscale Service]]
+
+* About
+
+Personal [[https://guix.gnu.org/][GNU Guix]] channel containing custom packages and services.
+
+* Installation
+
+Add this channel to =~/.config/guix/channels.scm=:
+
+#+BEGIN_SRC scheme
+(cons* (channel
+         (name 'prop4n)
+         (url "https://github.com/prop4n/prop4n-channel.git")
+         (branch "main"))
+       %default-channels)
+#+END_SRC
+
+Update Guix:
+
+#+BEGIN_SRC bash
+guix pull
+#+END_SRC
+
+* Available Packages
+
+** Tailscale
+
+Mesh VPN built on WireGuard.
+
+*** Installation
+
+#+BEGIN_SRC bash
+guix install tailscale
+#+END_SRC
+
+* Available Services
+
+** Tailscale Service
+
+Shepherd service to run the Tailscale daemon.
+
+*** Configuration
+
+Add to =/etc/config.scm=:
+
+#+BEGIN_SRC scheme
+(use-modules (gnu)
+             (prop4n services tailscale))
+
+(operating-system
+  ;; ...
+  (services
+   (append
+    (list
+     (service tailscale-service-type))
+    %desktop-services)))
+#+END_SRC
+
+Reconfigure and start:
+
+#+BEGIN_SRC bash
+sudo guix system reconfigure /etc/config.scm
+sudo herd start tailscaled
+sudo tailscale up
+#+END_SRC
+
