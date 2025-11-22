@@ -1,4 +1,4 @@
-(define-module (prop4n services tailscale)
+(define-module (services tailscale)
   #:use-module (gnu services)
   #:use-module (gnu services shepherd)
   #:use-module (gnu packages)
