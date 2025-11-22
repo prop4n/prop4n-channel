@@ -7,6 +7,7 @@
   #:use-module ((guix licenses) #:prefix license:)
   #:export (tailscale))
 
+;; public tailscale package (now the version and the base is hardcoded)
 (define-public tailscale
   (package
     (name "tailscale")
