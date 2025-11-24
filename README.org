@@ -9,6 +9,7 @@
   - [[#tailscale][Tailscale]]
   - [[#kubens][kubens]]
   - [[#kubectx][kubectx]]
+  - [[#ArgoCD][ArgoCD]]
 - [[#available-services][Available Services]]
   - [[#tailscale-service][Tailscale Service]]
 
@@ -64,6 +65,16 @@ Tool to switch between Kubernetes namespaces (and configure them for kubectl) ea
 
 #+BEGIN_SRC bash
 guix install kubens
+#+END_SRC
+
+** ArgoCD
+
+Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
+
+*** Installation
+
+#+BEGIN_SRC bash
+guix install argocd
 #+END_SRC
 
 * Available Services
