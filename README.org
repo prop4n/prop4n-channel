@@ -7,6 +7,8 @@
 - [[#installation][Installation]]
 - [[#available-packages][Available Packages]]
   - [[#tailscale][Tailscale]]
+  - [[#kubens][kubens]]
+  - [[#kubectx][kubectx]]
 - [[#available-services][Available Services]]
   - [[#tailscale-service][Tailscale Service]]
 
@@ -42,6 +44,26 @@ Mesh VPN built on WireGuard.
 
 #+BEGIN_SRC bash
 guix install tailscale
+#+END_SRC
+
+** kubectx
+
+Tool to switch between contexts (clusters) on kubectl faster
+
+*** Installation
+
+#+BEGIN_SRC bash
+guix install kubectx
+#+END_SRC
+
+** kubens
+
+Tool to switch between Kubernetes namespaces (and configure them for kubectl) easily
+
+*** Installation
+
+#+BEGIN_SRC bash
+guix install kubens
 #+END_SRC
 
 * Available Services
